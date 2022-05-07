@@ -6,7 +6,7 @@ $v2raya_source_path = 'v2rayA-' + $v2raya_latest
 
 Write-Output $v2raya_latest; Write-Output $v2raya_source_path; Write-Output $v2raya_url
 Invoke-WebRequest -Uri $v2raya_url -OutFile 'v2raya_latest.tar.gz'
-bsdtar -f "./v2raya_latest.tar.gz" -x -C "./"
+tar -xzf ./v2raya_latest.tar.gz
 Set-Location $v2raya_source_path
 pwsh -c "Set-Location ./gui ;yarn; yarn build"
 Copy-Item -Path ./web -Destination ./service/server/router/ -Force -Recurse

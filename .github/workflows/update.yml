@@ -25,7 +25,6 @@ jobs:
           brew install upx yarn
           sleep 5
           cd /home/runner/work/homebrew-v2raya/homebrew-v2raya
-          sudo apt install bsdtar -y
           pwsh -c ./update-helper.ps1
       - name: Release files
         uses: softprops/action-gh-release@v1
