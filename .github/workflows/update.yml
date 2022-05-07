@@ -1,0 +1,37 @@
+name: Release the zip files for baulk
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # - uses: actions/setup-go@v3
+      #   with:
+      #     go-version: '>=1.18.0'
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
+      - name: Add PowerShell
+        uses: Amadevus/pwsh-script@v2.0.1
+      - name: Build v2rayA
+        run: |
+          brew install upx node@16 yarn go
+          sleep 5
+          cd ~/homebrew-v2raya/homebrew-v2raya
+          pwsh -c update-helper.ps1
+      - name: Release files
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            v2rayA-x64.zip
+            v2rayA_x64_sha256.txt
+            v2rayA-A64.zip
+            v2rayA_A64_sha256.txt
