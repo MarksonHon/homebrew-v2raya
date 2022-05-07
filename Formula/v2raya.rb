@@ -11,14 +11,14 @@ class V2raya < Formula
     OS_Kernel = (system "uname", "--kernel-name")
     OS_CPU = (system "uname", "--processor")
    if OS_Kernel = "Linux"
-       url = url_linux_x64
-       sha = sha_linux_x64
+       url url_linux_x64
+       sha sha_linux_x64
    elsif OS_Kernel = "Darwin" and OS_CPU = "x86_64"
-       url = url_macos_x64
-       sha = sha_macos_x64
+       url url_macos_x64
+       sha sha_macos_x64
    else
-       url = url_macos_arm64
-       sha = sha_macos_arm64
+       url url_macos_arm64
+       sha sha_macos_arm64
    end
 
    depends_on "v2ray"
