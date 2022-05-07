@@ -25,11 +25,13 @@ upx -9 "./v2raya_amd64_linux" -o "./v2raya-x86_64-linux/v2raya"
 upx -9 "./v2raya_amd64_darwin" -o "./v2raya-x86_64-macos/v2raya"
 upx -9 "./v2raya_arm64_darwin" -o "./v2raya-aarch64-macos/v2raya"
 
-Compress-Archive -Path "./v2raya-x86_64-linux/*" -DestinationPath "./v2raya-x86_64-linux.zip"
-Get-FileHash "v2raya-x86_64-linux.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path v2raya-x86_64-linux-sha256.txt
+Compress-Archive -Path "./v2raya-x86_64-linux/*" -DestinationPath "../v2raya-x86_64-linux.zip"
+Get-FileHash "../v2raya-x86_64-linux.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path "../v2raya-x86_64-linux-sha256.txt"
 
-Compress-Archive -Path "./v2raya-x86_64-macos/*" -DestinationPath "./v2raya-x86_64-macos.zip"
-Get-FileHash "v2raya-x86_64-macos.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path v2raya-x86_64-macos-sha256.txt
+Compress-Archive -Path "./v2raya-x86_64-macos/*" -DestinationPath "../v2raya-x86_64-macos.zip"
+Get-FileHash "../v2raya-x86_64-macos.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path "../v2raya-x86_64-macos-sha256.txt"
 
-Compress-Archive -Path "./v2raya-aarch64-macos/*" -DestinationPath "./v2raya-aarch64-macos.zip"
-Get-FileHash "v2raya-aarch64-macos.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path v2raya-aarch64-macos-sha256.txt
+Compress-Archive -Path "./v2raya-aarch64-macos/*" -DestinationPath "../v2raya-aarch64-macos.zip"
+Get-FileHash "../v2raya-aarch64-macos.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path "../v2raya-aarch64-macos-sha256.txt"
+
+Get-Item -Path ./
