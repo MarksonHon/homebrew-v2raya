@@ -1,3 +1,5 @@
+$Env:PATH += ':/home/linuxbrew/.linuxbrew/opt/node@16/bin' 
+
 $v2raya_latest = Invoke-WebRequest -Uri 'https://api.github.com/repos/v2raya/v2raya/releases/latest' | ConvertFrom-Json | Select-Object tag_name | ForEach-Object { ([string]$_.tag_name).Split('v')[1] }
 $v2raya_url = 'https://github.com/v2rayA/v2rayA/archive/refs/tags/' + 'v' + $v2raya_latest + '.tar.gz'
 $v2raya_source_path = 'v2rayA-' + $v2raya_latest
