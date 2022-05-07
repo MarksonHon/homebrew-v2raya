@@ -34,4 +34,4 @@ Get-FileHash "../v2raya-x86_64-macos.zip" | Select-Object Hash | ForEach-Object 
 Compress-Archive -Path "./v2raya-aarch64-macos/*" -DestinationPath "../v2raya-aarch64-macos.zip"
 Get-FileHash "../v2raya-aarch64-macos.zip" | Select-Object Hash | ForEach-Object { ([string]$_.Hash) } | Out-File -Path "../v2raya-aarch64-macos-sha256.txt"
 
-Get-Item -Path ./
+ls -alh
