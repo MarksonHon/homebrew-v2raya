@@ -10,19 +10,19 @@ class V2raya < Formula
     $url_macos_arm64 = "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-aarch64-macos.zip"
     $sha_macos_arm64 = "5B3D839ED9854D41F031A2266B99C027975DCBC711FC562BE477DF5E9C29A6F8"
     $OS_Kernel = (system "uname")
-    $OS_CPU = (system "uname", "-m")
+    # $OS_CPU = (system "uname", "-m")
 
-   if $OS_Kernel = "Linux"
+   if $OS_Kernel == "Linux"
        url $url_linux_x64
        sha256 $sha_linux_x64
-   elsif $OS_Kernel = "Darwin" 
-    if $OS_CPU = "x86_64"
-       url $url_macos_x64
-       sha256 $sha_macos_x64
-    else
-       url $url_macos_arm64
-       sha256 $sha_macos_arm64
-    end
+   else # $OS_Kernel == "Darwin" 
+       if Hardware::CPU.intel?
+          url $url_macos_x64
+          sha256 $sha_macos_x64
+       else
+          url $url_macos_arm64
+          sha256 $sha_macos_arm64
+       end
    end
 
    depends_on "v2ray"
