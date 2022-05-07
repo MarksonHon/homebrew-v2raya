@@ -24,7 +24,7 @@ jobs:
         run: |
           brew install upx node@16 yarn go
           sleep 5
-          cd ~/homebrew-v2raya/homebrew-v2raya
+          cd /home/runner/work/homebrew-v2raya/homebrew-v2raya
           pwsh -c update-helper.ps1
       - name: Release files
         uses: softprops/action-gh-release@v1
