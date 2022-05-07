@@ -1,4 +1,4 @@
-name: Release the zip files for baulk
+name: Release v2rayA zip files for homebrew-v2raya
 
 on:
   release:
