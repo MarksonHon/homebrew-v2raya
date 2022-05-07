@@ -12,17 +12,15 @@ class V2raya < Formula
     $OS_Kernel = (system "uname")
     # $OS_CPU = (system "uname", "-m")
 
-   if $OS_Kernel == "Linux"
+   if OS_Kernel == "Linux"
        url $url_linux_x64
        sha256 $sha_linux_x64
-   else # $OS_Kernel == "Darwin" 
-       if Hardware::CPU.intel?
+   elsif Hardware::CPU.intel?
           url $url_macos_x64
           sha256 $sha_macos_x64
        else
           url $url_macos_arm64
           sha256 $sha_macos_arm64
-       end
    end
 
    depends_on "v2ray"
