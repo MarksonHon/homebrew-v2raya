@@ -12,7 +12,7 @@ class V2raya < Formula
     $OS_Kernel = (system "uname")
     # $OS_CPU = (system "uname", "-m")
 
-   if OS_Kernel == "Linux"
+   if $OS_Kernel == "Linux"
        url $url_linux_x64
        sha256 $sha_linux_x64
    elsif Hardware::CPU.intel?
