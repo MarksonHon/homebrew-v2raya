@@ -10,10 +10,10 @@ class V2raya < Formula
     sha_macos_arm64 = "5B3D839ED9854D41F031A2266B99C027975DCBC711FC562BE477DF5E9C29A6F8"
     OS_Kernel = (system "uname", "--kernel-name")
     OS_CPU = (system "uname", "--processor")
-   if OS_Kernel = Linux
+   if OS_Kernel = "Linux"
        url = url_linux_x64
        sha = sha_linux_x64
-   elsif OS_Kernel = Darwin and OS_CPU = x86_64
+   elsif OS_Kernel = "Darwin" and OS_CPU = "x86_64"
        url = url_macos_x64
        sha = sha_macos_x64
    else
