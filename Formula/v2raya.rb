@@ -11,14 +11,14 @@ class V2raya < Formula
     $sha_macos_arm64 = "5B3D839ED9854D41F031A2266B99C027975DCBC711FC562BE477DF5E9C29A6F8"
 
     # Checking OS_Kernel
-    system "bash", "-c", "echo 'uname > /tmp/uname.txt' > /tmp/1.sh"
-    system "chmod", "755", "/tmp/1.sh"
-    system "bash", "-c", "/tmp/1.sh"
-    aFile = File.new("/tmp/uname.txt", "r")
-   if aFile
-       @OS_Kernel = aFile.sysread(20)
-       puts @OS_Kernel
-      if @OS_Kernel == 'Linux'
+#     system "bash", "-c", "echo 'uname > /tmp/uname.txt' > /tmp/1.sh"
+#     system "chmod", "755", "/tmp/1.sh"
+#     system "bash", "-c", "/tmp/1.sh"
+#     aFile = File.new("/tmp/uname.txt", "r")
+#    if aFile
+#        @OS_Kernel = aFile.sysread(20)
+#        puts @OS_Kernel
+      if OS.linux?
         url $url_linux_x64
         sha256 $sha_linux_x64
       elsif Hardware::CPU.intel?
@@ -28,9 +28,9 @@ class V2raya < Formula
         url $url_macos_arm64
         sha256 $sha_macos_arm64
       end
-   else
-       puts "Unable to open file!"
-   end
+#    else
+#        puts "Unable to open file!"
+#    end
 
    depends_on "v2ray"
 
