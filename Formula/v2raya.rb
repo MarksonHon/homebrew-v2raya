@@ -9,10 +9,19 @@ class V2raya < Formula
     $sha_macos_x64 = "808387E83008C39854856563F09606FB13EA3E9404EF48B35CAE9ECB9280BE5A"
     $url_macos_arm64 = "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-aarch64-macos.zip"
     $sha_macos_arm64 = "5B3D839ED9854D41F031A2266B99C027975DCBC711FC562BE477DF5E9C29A6F8"
-    $OS_Kernel = (system "uname")
-    # $OS_CPU = (system "uname", "-m")
 
-   if $OS_Kernel == "Linux"
+    # Checking OS_Kernel
+    system "bash", "-c", "echo 'uname > /tmp/uname.txt' > /tmp/1.sh"
+    system "chmod", "755", "/tmp/1.sh"
+    system "bash", "-c", "/tmp/1.sh"
+    aFile = File.new("/tmp/uname.txt", "r")
+   if aFile
+       OS_Kernel = aFile.sysread(20)
+       puts OS_Kernel
+   else
+       puts "Unable to open file!"
+   end
+   if OS_Kernel == "Linux"
        url $url_linux_x64
        sha256 $sha_linux_x64
    elsif Hardware::CPU.intel?
