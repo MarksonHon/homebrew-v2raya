@@ -16,20 +16,20 @@ class V2raya < Formula
     system "bash", "-c", "/tmp/1.sh"
     aFile = File.new("/tmp/uname.txt", "r")
    if aFile
-       $OS_Kernel = aFile.sysread(20)
+       OS_Kernel = aFile.sysread(20)
        puts OS_Kernel
+      if OS_Kernel == "Linux"
+        url $url_linux_x64
+        sha256 $sha_linux_x64
+      elsif Hardware::CPU.intel?
+        url $url_macos_x64
+        sha256 $sha_macos_x64
+        else
+        url $url_macos_arm64
+        sha256 $sha_macos_arm64
+      end
    else
        puts "Unable to open file!"
-   end
-   if $OS_Kernel == "Linux"
-       url $url_linux_x64
-       sha256 $sha_linux_x64
-   elsif Hardware::CPU.intel?
-          url $url_macos_x64
-          sha256 $sha_macos_x64
-       else
-          url $url_macos_arm64
-          sha256 $sha_macos_arm64
    end
 
    depends_on "v2ray"
