@@ -17,8 +17,8 @@ class V2raya < Formula
     aFile = File.new("/tmp/uname.txt", "r")
    if aFile
        OS_Kernel = aFile.sysread(20)
-       puts OS_Kernel
-      if OS_Kernel == "Linux"
+       puts OS_Kerne
+      if OS_Kernel == Linux
         url $url_linux_x64
         sha256 $sha_linux_x64
       elsif Hardware::CPU.intel?
