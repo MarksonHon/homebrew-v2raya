@@ -3,7 +3,7 @@ class V2raya < Formula
     homepage "https://v2raya.org"
     license "AGPL-3.0-only"
     version "1.5.7-9"
-
+    ## Install v2rayA
     $url_linux_x64 = "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-x86_64-linux.zip"
     $sha_linux_x64 = "3BC57DAE8BEBC4BB39C8F8F28C3CABC4E34022F297BAB19CBEC1B8E1EF452FA1"
     $url_macos_x64 = "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-x86_64-macos.zip"
@@ -21,11 +21,15 @@ class V2raya < Formula
       sha256 $sha_macos_arm64
     end
 
-   depends_on "v2ray"
+    depends_on "v2ray"
 
-   service do
-    environment_variables V2RAYA_V2RAY_BIN: "#{HOMEBREW_PREFIX}/bin/v2ray", V2RAYA_LOG_FILE: "/tmp/v2raya.log"
-    run [bin/"v2raya", "--lite"]
-    keep_alive true
-  end
+    def install
+      bin.install "v2raya"
+    end
+
+    service do
+      environment_variables V2RAYA_V2RAY_BIN: "#{HOMEBREW_PREFIX}/bin/v2ray", V2RAYA_LOG_FILE: "/tmp/v2raya.log"
+      run [bin/"v2raya", "--lite"]
+      keep_alive true
+    end
 end
