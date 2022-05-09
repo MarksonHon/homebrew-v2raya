@@ -23,7 +23,7 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.1
       - name: Build v2rayA
         run: |
-          brew install upx yarn
+          brew install yarn
           sleep 5
           pwsh -c /home/runner/work/homebrew-v2raya/homebrew-v2raya/update-helper.ps1
       - name: Release files
