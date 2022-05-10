@@ -5,9 +5,9 @@ $Version_Current = Get-Content "./Formula/v2raya.rb" | Select-String version | F
 If ($Version_Current -eq $Version_Latest) {
     Write-Output "Nothing to do, you have the latest version."
 }else {
-    $New_SHA256_Darwin_A64 = curl -sL "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-aarch64-macos-sha256.txt"
-    $New_SHA256_Darwin_x64 = curl -sL "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-x86_64-macos-sha256.txt"
-    $New_SHA256_Linux_x64 = curl -sl "https://github.com/MarksonHon/homebrew-v2raya/releases/download/1.5.7-9/v2raya-x86_64-linux-sha256.txt"
+    $New_SHA256_Darwin_A64 = curl -sL "https://github.com/MarksonHon/homebrew-v2raya/releases/download/$Version_Latest/v2raya-aarch64-macos-sha256.txt"
+    $New_SHA256_Darwin_x64 = curl -sL "https://github.com/MarksonHon/homebrew-v2raya/releases/download/$Version_Latest/v2raya-x86_64-macos-sha256.txt"
+    $New_SHA256_Linux_x64 = curl -sl "https://github.com/MarksonHon/homebrew-v2raya/releases/download/$Version_Latest/v2raya-x86_64-linux-sha256.txt"
     $Old_SHA256_Darwin_A64 = Get-Content ./Formula/v2raya.rb | Select-String sha_macos_arm64 | ForEach-Object { ([string]$_).split('"')[1]} 
     $Old_SHA256_Darwin_x64 = Get-Content ./Formula/v2raya.rb | Select-String sha_macos_x64 | ForEach-Object { ([string]$_).split('"')[1]} 
     $Old_SHA256_Linux_x64 = Get-Content ./Formula/v2raya.rb | Select-String sha_linux_x64 | ForEach-Object { ([string]$_).split('"')[1]}
