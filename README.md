@@ -1,5 +1,7 @@
 # homebrew-v2raya
 
+Please go to <https://github.com/v2rayA/homebrew-v2raya/> , this repo won't update anymore.
+
 A Homebrew repository for v2rayA, supports Linux x64 and macOS x64, macOS Apple Silicon.
 
 ## Installation
